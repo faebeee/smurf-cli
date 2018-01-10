@@ -1,6 +1,6 @@
 {
   "name": "smurf-cli",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/faebeee/smurf-cli.git"
+  },
+  "bin": {
+    "smurf-cli": "node ./app.js"
   },
   "author": "",
   "license": "ISC",

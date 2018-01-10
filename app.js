@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 'use strict';
 
 const Promise = require('bluebird');
@@ -15,17 +16,27 @@ const CONFIG = {
 const smurf = new SmurfFetch(SETTINGS);
 
 let screen = blessed.screen();
-let grid = new contrib.grid({rows: 6, cols: 6, screen: screen});
+let grid = new contrib.grid({rows: 4, cols: 6, screen: screen});
 
-smurf.start('http://fabs.io', ['PSILoader'])
+
+async function loadWidget(widgets){
+    for(let i = 0; i < widgets.length; i++){
+        const widget = widgets[i];
+        await widget(smurf, grid, screen);
+    }
+}
+
+smurf.start('http://fabs.io', ['PSILoader', 'LightHouseLoader'])
     .then(() => {
-        return PSIResponseBytes(smurf, grid, screen);
-    })
-    .then( () => {
-        return PSISpeed(smurf, grid, screen);
-    })
-    .then( () => {
-            return PSIResources(smurf, grid, screen)
+        smurf.getLoaderData('LightHouseLoader')
+            .then( (data) => {
+                console.log(data);
+            })
+        return loadWidget([
+            PSIResponseBytes,
+            PSIResources,
+            PSISpeed,
+        ]);
     })
     .catch(e => {
         throw e;
