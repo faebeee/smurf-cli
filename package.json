@@ -1,0 +1,25 @@
+{
+  "name": "smurf-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faebeee/smurf-cli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faebeee/smurf-cli/issues"
+  },
+  "homepage": "https://github.com/faebeee/smurf-cli#readme",
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.8.5",
+    "bluebird": "^3.5.1",
+    "smurf-fetch": "^2.5.0"
+  }
+}
