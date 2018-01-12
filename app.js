@@ -1,54 +1,29 @@
 #! /usr/bin/env node
 'use strict';
+const argv = require('yargs').argv;
 
-const Promise = require('bluebird');
+const screen = require('./src/screen');
 const SmurfFetch = require('smurf-fetch');
-const blessed = require('blessed');
-const contrib = require('blessed-contrib');
-const PSIResponseBytes = require('./src/PSIResponseBytes');
-const PSIResources = require('./src/PSIResources');
-const PSISpeed = require('./src/PSISpeed');
+const ora = require('ora');
 
 const SETTINGS = {};
 const CONFIG = {
-    PSILoader: {}
+    PSILoader: {},
+    GeoIPLoader: {}
 };
+
+
 const smurf = new SmurfFetch(SETTINGS);
+const URL = argv.url;
 
-let screen = blessed.screen();
-let grid = new contrib.grid({rows: 4, cols: 6, screen: screen});
+const spinner = ora(`Creating report for ${URL}`).start();
 
-
-async function loadWidget(widgets){
-    for(let i = 0; i < widgets.length; i++){
-        const widget = widgets[i];
-        await widget(smurf, grid, screen);
-    }
-}
-
-smurf.start('http://fabs.io', ['PSILoader', 'LightHouseLoader'])
+smurf.start(URL, ['PSILoader', 'LightHouseLoader', 'GeoIPLoader', 'CSSStatsLoader', 'LoadTestLoader'])
     .then(() => {
-        smurf.getLoaderData('LightHouseLoader')
-            .then( (data) => {
-                console.log(data);
-            })
-        return loadWidget([
-            PSIResponseBytes,
-            PSIResources,
-            PSISpeed,
-        ]);
+        spinner.stop();
+        return screen(smurf, 'sm');
     })
-    .catch(e => {
-        throw e;
-    })
-
-
-setInterval(() => {
-    screen.render()
-}, 1000);
-
-screen.key(['escape', 'q', 'C-c'], function (ch, key) {
-    return process.exit(0);
-});
-
-screen.render();
+    .catch((e) => {
+        console.error(e);
+        return process.exit(0);
+    });

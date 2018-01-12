@@ -1,0 +1,72 @@
+{
+  "grid": {
+    "rows": 6,
+    "cols": 4
+  },
+  "widgets": [
+    {
+      "file": "../widgets/LHOverview",
+      "layout": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "file": "../widgets/PSIResources",
+      "layout": [
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "file": "../widgets/PSIResponseBytes",
+      "layout": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "file": "../widgets/PSISpeed",
+      "layout": [
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "file": "../widgets/Map",
+      "layout": [
+        2,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "file": "../widgets/LoadTest",
+      "layout": [
+        5,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "file": "../widgets/CSSSize",
+      "layout": [
+        2,
+        2,
+        2,
+        2
+      ]
+    }
+  ]
+}
+

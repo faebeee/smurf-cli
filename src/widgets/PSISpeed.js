@@ -1,10 +1,10 @@
 const contrib = require('blessed-contrib');
 
 
-module.exports = function (smurf, grid, screen) {
+module.exports = function (smurf, grid, layout) {
     return smurf.getLoaderData('PSILoader')
         .then((data) => {
-            var gauge = grid.set(0, 2, 1, 1, contrib.gauge,
+            var gauge = grid.set(...layout, contrib.gauge,
                 {
                     label: 'Speed'
                 });

@@ -1,10 +1,10 @@
 const contrib = require('blessed-contrib');
 
 
-module.exports = function (smurf, grid, screen) {
+module.exports = function (smurf, grid, layout) {
     return smurf.getLoaderData('PSILoader')
         .then((data) => {
-            var bar = grid.set(0, 1, 1, 1, contrib.bar,
+            var bar = grid.set(...layout, contrib.bar,
                 {
                     barWidth: 4
                     , barSpacing: 6
@@ -18,9 +18,9 @@ module.exports = function (smurf, grid, screen) {
             bar.setData(
                 {
                     titles: [
-                        'numberCssResources',
-                        'numberStaticResources',
-                        'numberJsResources',
+                        'CSS',
+                        'STCT',
+                        'JS',
                     ]
                     , data: [
                         data.data.pageStats.numberCssResources,
