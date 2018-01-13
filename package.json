@@ -11,7 +11,7 @@
     "url": "git+https://github.com/faebeee/smurf-cli.git"
   },
   "bin": {
-    "smurf-cli": "node ./app.js"
+    "smurf-cli": "./app.js"
   },
   "author": "",
   "license": "ISC",
