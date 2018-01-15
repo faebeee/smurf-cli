@@ -1,14 +1,12 @@
 'use strict';
 
 const path = require('path');
-const blessed = require('blessed');
 const contrib = require('blessed-contrib');
 
-let screen = blessed.screen();
 let grid = null;
 
 
-async function loadLayoutConfig(layout) {
+async function loadLayoutConfig(layout, screen) {
     const configFile = require('./config/layout-' + layout);
     grid = new contrib.grid({rows: configFile.grid.rows, cols: configFile.grid.cols, screen: screen});
     let configuredWidgets = configFile.widgets;
@@ -24,20 +22,13 @@ async function loadLayoutConfig(layout) {
     return widgets;
 }
 
-module.exports = async function (smurf, layout) {
-    const widgets = await loadLayoutConfig(layout);
+module.exports = async function (smurf, layout, screen) {
+    const widgets = await loadLayoutConfig(layout, screen);
     for (let i = 0; i < widgets.length; i++) {
         const conf = widgets[i];
         conf.widget(smurf, grid, conf.layout);
     }
 
-    setInterval(() => {
-        screen.render()
-    }, 1000);
 
-
-    screen.key(['escape', 'q', 'C-c'], function (ch, key) {
-        return process.exit(0);
-    });
 };
 

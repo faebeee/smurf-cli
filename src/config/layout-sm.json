@@ -5,15 +5,6 @@
   },
   "widgets": [
     {
-      "file": "../widgets/LHOverview",
-      "layout": [
-        0,
-        0,
-        1,
-        1
-      ]
-    },
-    {
       "file": "../widgets/PSIResources",
       "layout": [
         1,
@@ -65,6 +56,33 @@
         2,
         2,
         2
+      ]
+    },
+    {
+      "file": "../widgets/CSSSpecificity",
+      "layout": [
+        4,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "file": "../widgets/LHDomSize",
+      "layout": [
+        0,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "file": "../widgets/LHFMP",
+      "layout": [
+        0,
+        3,
+        1,
+        1
       ]
     }
   ]

@@ -18,7 +18,13 @@ const URL = argv.url;
 
 const spinner = ora(`Creating report for ${URL}`).start();
 
-smurf.start(URL, ['PSILoader', 'LightHouseLoader', 'GeoIPLoader', 'CSSStatsLoader', 'LoadTestLoader'])
+smurf.start(URL, [
+    'PSILoader',
+    'LightHouseLoader',
+    'GeoIPLoader',
+    'CSSStatsLoader',
+    'CSSAnalyzeLoader',
+    'LoadTestLoader'])
     .then(() => {
         spinner.stop();
         return screen(smurf, 'sm');
