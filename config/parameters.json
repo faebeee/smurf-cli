@@ -1,0 +1,17 @@
+{
+  "parameters": {
+    "grid": {
+      "rows": 6,
+      "cols": 4
+    },
+    "layoutFile": "%app.root%/config/layout-sm.json",
+    "loaders": [
+      "PSILoader",
+      "LightHouseLoader",
+      "GeoIPLoader",
+      "CSSStatsLoader",
+      "CSSAnalyzeLoader",
+      "LoadTestLoader"
+    ]
+  }
+}

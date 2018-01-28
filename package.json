@@ -24,6 +24,7 @@
     "blessed-contrib": "^4.8.5",
     "bluebird": "^3.5.1",
     "ora": "^1.3.0",
+    "servicecontainer": "^5.1.0",
     "smurf-fetch": "^2.5.1",
     "yargs": "^10.1.1"
   }

@@ -1,35 +1,19 @@
 #! /usr/bin/env node
+
 'use strict';
 const argv = require('yargs').argv;
 
-const screen = require('./src/screen');
-const SmurfFetch = require('smurf-fetch');
-const ora = require('ora');
-
-const SETTINGS = {};
-const CONFIG = {
-    PSILoader: {},
-    GeoIPLoader: {}
-};
-
-
-const smurf = new SmurfFetch(SETTINGS);
 const URL = argv.url;
 
-const spinner = ora(`Creating report for ${URL}`).start();
+const ServiceContainer = require('servicecontainer');
+const container = ServiceContainer.create(__dirname + '/config/services.json');
 
-smurf.start(URL, [
-    'PSILoader',
-    'LightHouseLoader',
-    'GeoIPLoader',
-    'CSSStatsLoader',
-    'CSSAnalyzeLoader',
-    'LoadTestLoader'])
+container.get('smurf')
+    .start(URL)
     .then(() => {
-        spinner.stop();
-        return screen(smurf, 'sm');
+        container.getServicesByTag('widget');
     })
     .catch((e) => {
         console.error(e);
-        return process.exit(0);
+        process.exit(1);
     });

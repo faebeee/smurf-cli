@@ -1,0 +1,70 @@
+{
+  "imports" : [
+    "./parameters.json"
+  ],
+  "services": {
+
+    "layout" : {
+      "file" : "../src/services/LayoutService",
+      "arguments" : ["%layoutFile%"]
+    },
+
+    "smurf" : {
+      "file" : "../src/services/SmurfService",
+      "arguments" : ["%loaders%"]
+    },
+
+    "screen" : {
+      "file" : "../src/services/ScreenService",
+      "arguments" : ["%grid%"]
+    },
+
+
+    "csssizewidget" : {
+      "file" : "../src/services/widgets/CssSizeWidget",
+      "arguments" : ["@smurf", "@screen", "@layout"],
+      "tags" : ["widget"]
+    },
+
+    "cssspecwidget" : {
+      "file" : "../src/services/widgets/CssSpecWidget",
+      "arguments" : ["@smurf", "@screen", "@layout"],
+      "tags" : ["widget"]
+    },
+    "domsizewidget" : {
+      "file" : "../src/services/widgets/DomSizeWidget",
+      "arguments" : ["@smurf", "@screen", "@layout"],
+      "tags" : ["widget"]
+    },
+    "fmpwidget" : {
+      "file" : "../src/services/widgets/FMPWidget",
+      "arguments" : ["@smurf", "@screen", "@layout"],
+      "tags" : ["widget"]
+    },
+    "resourceswidget" : {
+      "file" : "../src/services/widgets/ResourcesWidget",
+      "arguments" : ["@smurf", "@screen", "@layout"],
+      "tags" : ["widget"]
+    },
+    "responsebyteswidget" : {
+      "file" : "../src/services/widgets/ResponseBytesWidget",
+      "arguments" : ["@smurf", "@screen", "@layout"],
+      "tags" : ["widget"]
+    },
+    "speedwidget" : {
+      "file" : "../src/services/widgets/PSISpeedWidget",
+      "arguments" : ["@smurf", "@screen", "@layout"],
+      "tags" : ["widget"]
+    },
+    "loadtestwidget" : {
+      "file" : "../src/services/widgets/LoadTestWidget",
+      "arguments" : ["@smurf", "@screen", "@layout"],
+      "tags" : ["widget"]
+    },
+    "mapwidget" : {
+      "file" : "../src/services/widgets/MapWidget",
+      "arguments" : ["@smurf", "@screen", "@layout"],
+      "tags" : ["widget"]
+    }
+  }
+}

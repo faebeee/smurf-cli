@@ -1,10 +1,12 @@
+'use strict';
+
 const contrib = require('blessed-contrib');
 
-
-module.exports = function (smurf, grid, layout) {
-    return smurf.getLoaderData('LightHouseLoader')
+module.exports = class FMPWidget {
+    constructor(smurfService, screenService, layoutProvider) {
+        smurfService.smurf.getLoaderData('LightHouseLoader')
         .then((data) => {
-            const bar = grid.set(...layout, contrib.bar, {
+            const bar = screenService.grid.set(...layoutProvider.get('FMPWidget'), contrib.bar, {
                 label: 'First Meaningful Paint'
                 , barWidth: 4
                 , barSpacing: 6
@@ -19,4 +21,5 @@ module.exports = function (smurf, grid, layout) {
                 })
 
         });
+    }
 };
